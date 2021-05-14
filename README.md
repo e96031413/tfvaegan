@@ -1,6 +1,8 @@
 # tfvaegan
 Custom AwA2 semantic attribute training for tfvaegan
 
+This project is based on [Latent Embedding Feedback and Discriminative Features for Zero-Shot Classification (ECCV 2020)](https://github.com/akshitac8/tfvaegan). I apply some custom modification on top of it.
+
 ## Installation
 ```shell
 conda update conda
@@ -83,3 +85,19 @@ att = [ 1:1; 2:2; 3:3; ............50:50];
 % Now you can load myfile.mat as your custom attribute.
 ```
 For custom attribute code, please see line 9 in [zero-shot-images/config.py](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/config.py#L9), and line 40-54 in [zero-shot-images/util.py](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/util.py#L40-L54).
+
+## How to create your own visual feature?
+Use [resnet101_feature_extractor.py](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/resnet101_feature_extractor.py) to extract the image.
+
+The script is used for my own dataset only, if you want to apply this code to your own dataset, just modify the loading images part.
+
+## Citation:
+```
+@inproceedings{narayan2020latent,
+	title={Latent Embedding Feedback and Discriminative Features for Zero-Shot Classification},
+	author={Narayan, Sanath and Gupta, Akshita and Khan, Fahad Shahbaz and Snoek, Cees GM and Shao, Ling},
+	booktitle={ECCV},
+	year={2020}
+}
+
+```
