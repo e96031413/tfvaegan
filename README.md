@@ -1,2 +1,2 @@
 # tfvaegan
-Custom dataset for tfvaegan
+Custom AwA2 semantic attribute training for tfvaegan
