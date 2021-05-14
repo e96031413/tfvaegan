@@ -50,12 +50,12 @@ For the other 3 attributes, I use their class information only. I encode the cla
 (1,0,0,0,0,0,0..........0 for class 1, and
 0,1,0,0,0,0,0,0,0............0 for class 2, etc.)
 
-You can view the encoding file in .mat and .csv file [here]().
+You can view the encoding file in .mat and .csv file [here](https://github.com/e96031413/tfvaegan/tree/main/zero-shot-images/data/AWA2).
 
 Note: When training the model, we use .mat file only. ( csv file is only for human to understand the encoding structure.)
 
 ## How to create your own semantic attribute?
-You can use the notebook [here]() to create the attribute.
+You can use the notebook [here](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/data/AWA2/awa_create_custom_attribute.ipynb) to create the attribute.
 
 * Step 1
 Define your attribute with pandas (For example: one-hot encoding or label encoding)
@@ -75,11 +75,11 @@ csvread('fileName.csv')
 
 att(2:end,:)  % select all except the first row according to your structure
 
-# save att as mat file
+% save att as mat file
 att = [ 1:1; 2:2; 3:3; ............50:50];
 
-save myfile.mat att -v7   % use flag -v7 for scipy.io mat file compatibility.
+% save myfile.mat att -v7   % use flag -v7 for scipy.io mat file compatibility.
 
-Now you can load myfile.mat as your custom attribute.
+% Now you can load myfile.mat as your custom attribute.
 ```
-For custom attribute code, please see line 9 in [zero-shot-images/config.py](), and line 40-54 in [zero-shot-images/util.py]().
+For custom attribute code, please see line 9 in [zero-shot-images/config.py](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/config.py#L9), and line 40-54 in [zero-shot-images/util.py](https://github.com/e96031413/tfvaegan/blob/main/zero-shot-images/util.py#L40-L54).
