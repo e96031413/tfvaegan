@@ -42,11 +42,11 @@ python image_scripts/run_sun_tfvaegan.py
 
 For the other 3 attributes, I use their class information only. I encode the classes info to binary, bit, and one-hot, respectively.( 50 class )
 
-**bit_encoding:** 0,0,0,0,0 for class 1, 0,0,0,0,1 for class 2, .......... 1,0,0,0,2 for class 50
+**bit_encoding:** 0,0,0,0,0 for class 1, 0,0,0,0,1 for class 2, .......... 1,0,0,0,2 for class 50 ( 50 class x 5 attribute)
 
-**label_encoding:** 1 for class 1, 2 for class 2,.............. 50 for class 50
+**label_encoding:** 1 for class 1, 2 for class 2,.............. 50 for class 50 ( 50 class x 1 attribute)
 
-**one_hot_encoding:** Since there are 50 classes in AWA2 dataset, each class can be represented by 50 different numbers.
+**one_hot_encoding:** Since there are 50 classes in AWA2 dataset, each class can be represented by 50 different numbers. ( 50 class x 50 attribute)
 (1,0,0,0,0,0,0..........0 for class 1, and
 0,1,0,0,0,0,0,0,0............0 for class 2, etc.)
 
