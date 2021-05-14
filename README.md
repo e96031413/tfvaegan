@@ -1,2 +1,85 @@
 # tfvaegan
 Custom AwA2 semantic attribute training for tfvaegan
+
+## Installation
+```shell
+conda update conda
+conda create --name tfvaegan python=3.6
+conda activate tfvaegan
+
+pip install http://download.pytorch.org/whl/cu90/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
+pip install h5py sklearn pandas
+
+git clone https://github.com/e96031413/tfvaegan
+cd tfvaegan/zero-shot-images/data/
+
+wget  http://datasets.d2.mpi-inf.mpg.de/xian/cvpr18xian.zip
+unzip cvpr18xian.zip && rm cvpr18xian.zip
+
+wget http://datasets.d2.mpi-inf.mpg.de/xian/xlsa17.zip
+unzip xlsa17.zip && rm xlsa17.zip
+
+move all the folders inside {cvpr18xian/data/*} and {xlsa17/data/*} to tfvaegan/zero-shot-images/data/
+```
+
+## Zero-Shot Image Classification
+
+make sure you have execute ```conda activate tfvaegan```
+
+```shell
+cd zero-shot-images
+python image-scripts/run_cub_tfvaegan.py
+python image_scripts/run_awa_tfvaegan.py   # There are 5 different version of semantic attributes that can be trained with this script.
+python image_scripts/run_flo_tfvaegan.py
+python image_scripts/run_sun_tfvaegan.py
+```
+
+## 5 different version of semantic attributes for AWA2 dataset
+
+**att:** continuous value ( 0.1, 0.3, 0.7..... 0.9) ( 50 class x 85 attribute)
+
+**binaryAtt:** binary value (0 or 1)  ( 50 class x 85 attribute)
+
+For the other 3 attributes, I use their class information only. I encode the classes info to binary, bit, and one-hot, respectively.( 50 class )
+
+**bit_encoding:** 0,0,0,0,0 for class 1, 0,0,0,0,1 for class 2, .......... 1,0,0,0,2 for class 50
+
+**label_encoding:** 1 for class 1, 2 for class 2,.............. 50 for class 50
+
+**one_hot_encoding:** Since there are 50 classes in AWA2 dataset, each class can be represented by 50 different numbers.
+(1,0,0,0,0,0,0..........0 for class 1, and
+0,1,0,0,0,0,0,0,0............0 for class 2, etc.)
+
+You can view the encoding file in .mat and .csv file [here]().
+
+Note: When training the model, we use .mat file only. ( csv file is only for human to understand the encoding structure.)
+
+## How to create your own semantic attribute?
+You can use the notebook [here]() to create the attribute.
+
+* Step 1
+Define your attribute with pandas (For example: one-hot encoding or label encoding)
+* Step 2
+Export the dataframe to csv file
+* Step 3
+Load the csv file with Octave or Matlab to check the structure of the csv file, the structure should look similar to the one provided by the dataset. Modify it manually if you find the structure wrong.
+* Step 4
+Save the opened csv file as .mat file.
+
+Supposed that you have followed my step1 and step 2, and open the octave:
+In the terminal:
+```matlab
+csvread('fileName.csv')
+
+% manually rename the ans variable with att variable in the bottom left panel.
+
+att(2:end,:)  % select all except the first row according to your structure
+
+# save att as mat file
+att = [ 1:1; 2:2; 3:3; ............50:50];
+
+save myfile.mat att -v7   % use flag -v7 for scipy.io mat file compatibility.
+
+Now you can load myfile.mat as your custom attribute.
+```
+For custom attribute code, please see line 9 in [zero-shot-images/config.py](), and line 40-54 in [zero-shot-images/util.py]().
