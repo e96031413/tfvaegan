@@ -73,9 +73,9 @@ In the terminal:
 ```matlab
 csvread('fileName.csv')
 
-% manually rename the ans variable with att variable in the bottom left panel.
+ans(2:end,:)  % select all except the first row according to your structure
 
-att(2:end,:)  % select all except the first row according to your structure
+% manually rename the ans variable with att variable in the bottom left panel.
 
 % save att as mat file
 att = [ 1:1; 2:2; 3:3; ............50:50];
