@@ -80,7 +80,7 @@ att(2:end,:)  % select all except the first row according to your structure
 % save att as mat file
 att = [ 1:1; 2:2; 3:3; ............50:50];
 
-% save myfile.mat att -v7   % use flag -v7 for scipy.io mat file compatibility.
+save myfile.mat att -v7   % use flag -v7 for scipy.io mat file compatibility.
 
 % Now you can load myfile.mat as your custom attribute.
 ```
