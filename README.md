@@ -102,7 +102,7 @@ However, when it comes to the self-made attribute, only one_hot_encoding attribu
 |  ZSL Unseen ACC |   62.5%   |    71.4%   | 17.9%   |
 |  GZSL Seen ACC  |   76.2%   |    75.4%   | 78.8%   |
 | GZSL Unseen ACC |   47.4%   |    59.0%   | 5.5%    |
-|      GZSH H     |   58.5%   |    66.3%   | 10.4%   |
+|      GZSL H     |   58.5%   |    66.3%   | 10.4%   |
 
 **I assume that the reason why bit_encoding and label_encoding can't be trained is that both of them are with small attribute size.(5 and 1, respectively)**
 **For one_hot_encoding, it is 50 and can be trained successfully.**
