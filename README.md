@@ -91,6 +91,23 @@ Use [resnet101_feature_extractor.py](https://github.com/e96031413/tfvaegan/blob/
 
 The script is used for my own dataset only, if you want to apply this code to your own dataset, just modify the loading images part.
 
+## Experiment result
+
+The experiment result shows that among these 5 types of attribute, the provided continuous and binary attributes work smoothly.
+
+However, when it comes to the self-made attribute, only one_hot_encoding attribute can be successfully trained with the corresponding attribute size(50). But the performance is not good. Thus I only provide attribute methods that work in the following table.
+
+|                 | binaryATT | continuous | one-hot |
+|:---------------:|:---------:|:----------:|---------|
+|  ZSL Unseen ACC |   62.5%   |    71.4%   | 17.9%   |
+|  GZSL Seen ACC  |   76.2%   |    75.4%   | 78.8%   |
+| GZSL Unseen ACC |   47.4%   |    59.0%   | 5.5%    |
+|      GZSH H     |   58.5%   |    66.3%   | 10.4%   |
+
+**I assume that the reason why bit_encoding and label_encoding can't be trained is that both of them are with small attribute size.(5 and 1, respectively)**
+**For one_hot_encoding, it is 50 and can be trained successfully.**
+
+
 ## Citation:
 ```
 @inproceedings{narayan2020latent,
@@ -99,5 +116,4 @@ The script is used for my own dataset only, if you want to apply this code to yo
 	booktitle={ECCV},
 	year={2020}
 }
-
 ```
